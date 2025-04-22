@@ -1,0 +1,65 @@
+<div class="add-freezer-item">
+  <h1>Add New Item to Freezer</h1>
+
+  <form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+    <div class="form-group">
+      <label for="name">Item Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="name"
+        required
+        placeholder="e.g., Chicken Breast"
+      >
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          id="amount"
+          name="amount"
+          [(ngModel)]="amount"
+          required
+          min="0.1"
+          step="0.1"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="amountUnit">Unit</label>
+        <select
+          id="amountUnit"
+          name="amountUnit"
+          [(ngModel)]="amountUnit"
+        >
+          @for (unit of amountUnits; track unit) {
+            <option [value]="unit">{{ unit }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Item Image</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      >
+
+      <div *ngIf="imagePreview" class="image-preview">
+        <img [src]="imagePreview" alt="Preview">
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" routerLink="/contents" class="cancel-button">Cancel</button>
+      <button type="submit" [disabled]="!name || amount <= 0" class="submit-button">Add to Freezer</button>
+    </div>
+  </form>
+</div>

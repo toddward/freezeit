@@ -1,0 +1,28 @@
+<div class="freezer-contents">
+  <div class="header">
+    <h1>Freezer Contents</h1>
+    <a routerLink="/add" class="add-button">Add New Item</a>
+  </div>
+
+  <div *ngIf="freezerItems.length === 0" class="empty-state">
+    <p>Your freezer is empty. Add some items to keep track of them!</p>
+    <a routerLink="/add" class="add-button">Add First Item</a>
+  </div>
+
+  <div *ngIf="freezerItems.length > 0" class="items-grid">
+    @for (item of freezerItems; track item.id) {
+      <div class="item-card">
+        <div class="item-image" [style.backgroundColor]="item.imageUrl ? 'transparent' : '#e0e0e0'">
+          <img *ngIf="item.imageUrl" [src]="item.imageUrl" [alt]="item.name">
+          <div *ngIf="!item.imageUrl" class="placeholder-text">{{ item.name.charAt(0).toUpperCase() }}</div>
+        </div>
+        <div class="item-details">
+          <h3>{{ item.name }}</h3>
+          <p class="amount">{{ item.amount }} {{ item.amountUnit }}</p>
+          <p class="date">Added: {{ item.dateAdded | date:'mediumDate' }}</p>
+          <button class="delete-button" (click)="deleteItem(item.id)">Remove</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
