@@ -9,6 +9,8 @@ An Angular-based application for tracking items in your freezer. Keep track of w
 - **Image Support**: Add images to your freezer items for easy identification
 - **Persistent Storage**: Data is saved to localStorage for persistence between sessions
 
+Potential Future Options: [Potential Features](../freezerapp/POTENTIAL_FEATURES.md)
+
 ## Getting Started
 
 ### Local Development
