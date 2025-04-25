@@ -64,6 +64,20 @@ export class FreezerItemService {
     }
   }
 
+  updateAmount(id: string, amount: number): void {
+    const currentItems = this.itemsSubject.value;
+    const index = currentItems.findIndex(item => item.id === id);
+
+    if (index !== -1) {
+      const newItems = [...currentItems];
+      newItems[index] = {
+        ...newItems[index],
+        amount: Math.max(0, amount) // Prevent negative amounts
+      };
+      this.saveItems(newItems);
+    }
+  }
+
   delete(id: string): void {
     const currentItems = this.itemsSubject.value;
     const filteredItems = currentItems.filter(item => item.id !== id);

@@ -28,4 +28,12 @@ export class FreezerContentsComponent implements OnInit {
   deleteItem(id: string): void {
     this.freezerItemService.delete(id);
   }
+
+  incrementAmount(id: string, currentAmount: number): void {
+    this.freezerItemService.updateAmount(id, currentAmount + 1);
+  }
+
+  decrementAmount(id: string, currentAmount: number): void {
+    this.freezerItemService.updateAmount(id, currentAmount - 1);
+  }
 }

@@ -90,10 +90,40 @@ h1 {
   color: #333;
 }
 
-.amount {
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 0.5rem;
+.amount-control {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+
+  .amount {
+    font-weight: 500;
+    color: #555;
+    margin: 0 0.5rem;
+    min-width: 60px;
+  }
+
+  .quantity-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .date {

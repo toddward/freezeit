@@ -1,59 +1,108 @@
-# Freezerapp
+# Freezer Inventory App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+An Angular-based application for tracking items in your freezer. Keep track of what you have stored, when you added it, and manage quantities easily.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **Track Freezer Contents**: Add, remove, and update items in your freezer
+- **Item Management**: Increment/decrement quantities with easy-to-use controls
+- **Image Support**: Add images to your freezer items for easy identification
+- **Persistent Storage**: Data is saved to localStorage for persistence between sessions
+
+## Getting Started
+
+### Local Development
+
+1. **Prerequisites**
+   - Node.js (v20 or later recommended)
+   - npm (included with Node.js)
+
+2. **Installation**
+   ```bash
+   # Clone the repository
+   git clone <repository-url>
+   cd freezerapp
+   
+   # Install dependencies
+   npm install
+   ```
+
+3. **Development Server**
+   ```bash
+   # Start the development server
+   ng serve
+   ```
+
+   Once running, open your browser to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+### Docker
+
+#### Production Environment
+
+1. **Prerequisites**
+   - [Docker](https://docs.docker.com/get-docker/)
+   - [Docker Compose](https://docs.docker.com/compose/install/) (usually included with Docker Desktop)
+
+2. **Build and Run**
+   ```bash
+   # Build and start the application
+   docker-compose up -d
+   
+   # The application will be available at http://localhost:4200
+   ```
+
+   To stop the application:
+   ```bash
+   docker-compose down
+   ```
+
+#### Development Environment
+
+For development with hot reloading:
 
 ```bash
-ng serve
+# Build and start the development environment
+docker-compose -f docker-compose.dev.yml up -d
+
+# The development server will be available at http://localhost:4200
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+To stop the development environment:
 ```bash
-ng generate component component-name
+docker-compose -f docker-compose.dev.yml down
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Building the Application
 
 ```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
+# Build for production
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+This will compile your project and store the build artifacts in the `dist/` directory.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Running Tests
 
 ```bash
+# Execute unit tests
 ng test
+
+# Run tests for a specific component
+ng test --include=src/app/path/to/file.spec.ts
 ```
 
-## Running end-to-end tests
+## Docker Configuration
 
-For end-to-end (e2e) testing, run:
+The application includes:
 
-```bash
-ng e2e
-```
+- `Dockerfile` - Production build with Nginx server
+- `Dockerfile.dev` - Development setup with hot reloading
+- `docker-compose.yml` - Production environment configuration
+- `docker-compose.dev.yml` - Development environment with volume mapping
+- `nginx.conf` - Custom Nginx configuration for Angular routing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+See [README.docker.md](README.docker.md) for detailed Docker instructions.
 
 ## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more information on using the Angular CLI, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

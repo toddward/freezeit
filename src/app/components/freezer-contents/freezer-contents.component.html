@@ -18,7 +18,11 @@
         </div>
         <div class="item-details">
           <h3>{{ item.name }}</h3>
-          <p class="amount">{{ item.amount }} {{ item.amountUnit }}</p>
+          <div class="amount-control">
+            <button class="quantity-btn" (click)="decrementAmount(item.id, item.amount)" [disabled]="item.amount <= 1">-</button>
+            <p class="amount">{{ item.amount }} {{ item.amountUnit }}</p>
+            <button class="quantity-btn" (click)="incrementAmount(item.id, item.amount)">+</button>
+          </div>
           <p class="date">Added: {{ item.dateAdded | date:'mediumDate' }}</p>
           <button class="delete-button" (click)="deleteItem(item.id)">Remove</button>
         </div>
